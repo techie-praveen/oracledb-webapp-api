@@ -1,6 +1,7 @@
 package oracledb.webapp.api.controller;
 
 import oracledb.webapp.api.entity.Department;
+import oracledb.webapp.api.service.DepartmentService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
