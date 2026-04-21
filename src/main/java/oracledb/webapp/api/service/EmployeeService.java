@@ -1,4 +1,4 @@
-package oracledb.webapp.api.controller;
+package oracledb.webapp.api.service;
 
 import oracledb.webapp.api.entity.Employee;
 import oracledb.webapp.api.repository.EmployeeRepository;

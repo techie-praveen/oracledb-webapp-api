@@ -1,6 +1,7 @@
 package oracledb.webapp.api.controller;
 
 import oracledb.webapp.api.entity.Employee;
+import oracledb.webapp.api.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
-    private final oracledb.webapp.api.controller.EmployeeService service;
+    private final EmployeeService service;
 
     public EmployeeController(EmployeeService service) {
         this.service = service;
