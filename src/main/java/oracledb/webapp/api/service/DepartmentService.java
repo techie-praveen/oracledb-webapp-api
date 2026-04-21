@@ -3,6 +3,8 @@ package oracledb.webapp.api.service;
 import oracledb.webapp.api.entity.Department;
 import oracledb.webapp.api.exception.ResourceNotFoundException;
 import oracledb.webapp.api.repository.DepartmentRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -79,4 +81,20 @@ public class DepartmentService {
         Department department = getDepartmentById(deptId);
         departmentRepository.delete(department);
     }
+
+//    public Page<Department> getDepartments(int page, int size) {
+//        return departmentRepository.findAll(PageRequest.of(page, size));
+//    }
+public Page<Department> getDepartments(String search, int page, int size) {
+
+    if (search == null || search.isEmpty()) {
+        return departmentRepository.findAll(PageRequest.of(page, size));
+    }
+
+    return departmentRepository
+            .findByDepartmentNameContainingIgnoreCase(
+                    search,
+                    PageRequest.of(page, size)
+            );
+}
 }

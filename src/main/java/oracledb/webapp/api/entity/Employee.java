@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class Employee {
 
     @Id
@@ -53,7 +54,8 @@ public class Employee {
     @Column(name = "created_date", updatable = false)
     private LocalDateTime createdDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "department_id", nullable = false)
     @JsonBackReference
     @ToString.Exclude
