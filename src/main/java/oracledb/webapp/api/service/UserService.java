@@ -5,6 +5,7 @@ import oracledb.webapp.api.entity.User;
 import oracledb.webapp.api.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -15,6 +16,8 @@ public class UserService {
 
     // FETCH ALL USERS
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return userRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(User::getUserId).reversed()).toList();
     }
 }
